@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Brain cancer image classifier</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap/css/bootstrap.min.css') }}">    
+        <style>
+            body{
+                margin: 0;
+                padding: 0;
+                background: url("{{ url_for('static', filename='images/stetoscope1.jpg') }}") no-repeat center center fixed;
+                background-size: cover;
+                position: relative;
+                z-index: 0;
+            }
+            body::before {
+                content: '';
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(255, 255, 255, 0.3);
+                z-index: -1;
+            }
+            .container{
+                margin-top: 30px;
+                max-width: 600px;
+                background-color: #ffffff;
+                padding: 30px;
+                border-radius: 15px;
+                box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+                margin-bottom: 20px;
+            }
+            h1{
+                margin-bottom: 30px;
+                text-align: center;
+            }
+            .form-group{
+                margin-bottom: 20px;
+            }
+            .btn{
+                width: 100%;
+            }
+            .result {
+                margin-top: 30px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Brain cancer image classifier</h1>
+            <p class="text-center text-muted mb-4">
+                Upload an MRI image of the brain to predict the presence of a tumor. 
+                Our model will classify the image into one of the following categories: 
+                <strong>glioma</strong>, <strong>meningioma</strong>, <strong>pituitary</strong>, or <strong>notumor</strong>.
+            </p>
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="model">Choose a model :</label>
+                    <select name="model" id="model" class="form-control">
+                        {% for m in model_names %}
+                            <option value="{{ models[m] }}">{{m}}</option>
+                        {% endfor %}
+                     </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="image">Upload an image:</label>
+                    <input type="file" name="image" id="image" class="form-control" accept="image/*" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Predict</button>
+            </form>
+            {% if prediction %}
+                {% if prediction == "notumor"%}
+                    <div class="result alert alert-success">
+                        <h2>Prediction: {{ prediction }}</h2>
+                        <p>No tumor detected. Good news !</p>
+                    </div>
+                {% elif prediction == "glioma" %}
+                    <div class="result alert alert-danger">
+                        <h2>Prediction: {{ prediction }}</h2>
+                        <p>Possible Glioma tumor detected. Please consult a specialist ! <br>
+                        Here are more information about it : <a href="https://www.mayoclinic.org/diseases-conditions/glioma/symptoms-causes/syc-20350251" target="_blank" rel="noopener noreferrer">Glioma</a></p>
+                    </div>
+                {% elif prediction == "meningioma" %}
+                    <div class="result alert alert-warning">
+                        <h2>Prediction: {{ prediction }}</h2>
+                        <p>Possible Meningioma tumor detected. Medical consultation advised.<br>
+                        Here are more information about it : <a href="https://www.mayoclinic.org/diseases-conditions/meningioma/symptoms-causes/syc-20355643" target="_blank" rel="noopener noreferrer">Meningioma</a></p>
+                    </div>
+                {% elif prediction == "pituitary" %}
+                    <div class="result alert alert-info">
+                        <h2>Prediction: {{ prediction }}</h2>
+                        <p>Signs of Pituitary tumor detected. Seek medical advice. <br>
+                        Here are more information about it : <a href="https://www.mayoclinic.org/diseases-conditions/pituitary-tumors/symptoms-causes/syc-20350548#:~:text=Pituitary%20tumors%20are%20unusual%20growths,that%20control%20important%20body%20functions." target="_blank" rel="noopener noreferrer">Pituitary</a></p>
+                    </div>
+                {% endif %}
+                
+            {% endif %}
+        </div>
+
+    
+    </body>
+</html>
