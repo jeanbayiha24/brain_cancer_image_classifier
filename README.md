@@ -43,9 +43,12 @@ Then go to: http://127.0.0.1:5000
   - jean_bayiha_model.torch: PyTorch model (custom CNN)
 
 ## 👨‍💻 Author
+
   Jean Bayiha
+  
   GitHub: https://github.com/JeanBayiha24
   
 ## 📚 References
+
 MobileNetV2 Paper : https://arxiv.org/pdf/1801.04381
 
