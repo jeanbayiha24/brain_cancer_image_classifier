@@ -9,9 +9,11 @@ This project is a web image classification tool that allows users to upload brai
 
 ## Training Accuracy and Loss
 - For the TensorFlow model
+  
 ![For the TensorFlow model](Train&Loss_MobileNetV2_15Epochs_TensorFlow.png)
 
 - For the PyTorch model
+  
 ![For the PyTorch model](Train&Loss_PyTorchFromScratch_15Epochs.png)
 
 ## 🚀 Getting Started
@@ -40,9 +42,10 @@ Then go to: http://127.0.0.1:5000
 
   - jean_bayiha_model.torch: PyTorch model (custom CNN)
 
-##👨‍💻 Author
+## 👨‍💻 Author
   Jean Bayiha
   GitHub: https://github.com/JeanBayiha24
-##📚 References
+  
+## 📚 References
 MobileNetV2 Paper : https://arxiv.org/pdf/1801.04381
 
