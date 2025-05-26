@@ -4,3 +4,4 @@ tensorflow
 torch
 torchvision
 pillow
+gunicorn
