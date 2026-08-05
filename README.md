@@ -103,6 +103,8 @@ Then open: [http://127.0.0.1:5000](http://127.0.0.1:5000)
 - `jean_bayiha_model.torch` — PyTorch custom CNN model.
 
 ---
+**NB**: Models are trained on a specific Kaggle brain MRI dataset. Predictions on images from other sources (different scanners, hospitals, modalities, or web images) may be unreliable and should not be used for clinical decisions.
+---
 
 ## 👨‍💻 Author
 
