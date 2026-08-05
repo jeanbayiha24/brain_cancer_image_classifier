@@ -1,0 +1,10 @@
+flask
+numpy 
+tensorflow
+torch
+torchvision
+pillow
+gunicorn
+scikit-learn
+matplotlib
+tqdm
